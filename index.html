@@ -7,16 +7,16 @@
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --page: #eef1f4;
     --ink: #16202a;
     --muted: #5c6672;
-    --line: #d6dce2;
     --sans: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     --display: "Unbounded", "Golos Text", system-ui, sans-serif;
     --mono: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+    --gap: 26px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
@@ -32,177 +32,167 @@
   }
 
   /* ---------- шапка ---------- */
-  .wrap { max-width: 1240px; margin: 0 auto; padding: 40px 28px 56px; }
-  .hero { display: flex; align-items: center; gap: 22px; margin-bottom: 36px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 28px 56px; }
+  .hero { display: flex; align-items: center; gap: 22px; margin-bottom: 32px; }
   .hero img { width: 72px; height: 72px; flex: none; filter: drop-shadow(0 2px 4px rgba(0,0,0,.18)); }
-  .eyebrow {
-    font: 600 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 10px;
-  }
+  .eyebrow { font: 600 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
   h1 { font: 600 clamp(28px, 4vw, 42px)/1.05 var(--display); margin: 0; letter-spacing: -.01em; }
   .lead { margin: 10px 0 0; color: var(--muted); font-size: 16px; max-width: 60ch; }
 
-  /* ---------- сетка: 3 сверху, 2 снизу ---------- */
-  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
-  .card { grid-column: span 2; }
-  .card.wide { grid-column: span 3; }
-  @media (max-width: 980px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-    .card, .card.wide { grid-column: span 1; }
-    .card:last-child { grid-column: span 2; }
-  }
-  @media (max-width: 640px) {
-    .wrap { padding: 26px 16px 40px; }
-    .hero { gap: 14px; }
-    .hero img { width: 54px; height: 54px; }
-    .grid { grid-template-columns: 1fr; gap: 16px; }
-    .card:last-child { grid-column: span 1; }
-    .t-mat .title, .t-mot .title { font-size: 20px; }
-    .t-mat .title svg { width: 20px; height: 20px; }
-  }
-
-  /* ---------- общая карточка ---------- */
-  .card {
-    position: relative; display: flex; flex-direction: column;
-    min-height: 300px; border-radius: 18px; overflow: hidden;
-    text-decoration: none; color: inherit;
-    box-shadow: 0 1px 2px rgba(15,20,30,.08), 0 10px 30px rgba(15,20,30,.10);
-    transition: transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s;
-    isolation: isolate;
-  }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 2px 4px rgba(15,20,30,.10), 0 22px 46px rgba(15,20,30,.18); }
-  .card:active { transform: translateY(-2px); }
-  .card:focus-visible { outline: 3px solid #1f63c8; outline-offset: 4px; }
-  .stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 26px 22px; }
-  .foot {
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    padding: 12px 20px; font: 500 12px/1 var(--mono); letter-spacing: .02em;
-  }
-  .foot .go { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: 0; white-space: nowrap; }
-  .foot .go::after { content: "\00a0→"; display: inline-block; transition: transform .2s; }
-  .card:hover .foot .go::after { transform: translateX(4px); }
-  .btn {
-    display: block; width: 100%; text-align: center;
-    padding: 12px 16px; font: 600 15px/1.2 var(--sans);
-  }
-
-  /* ===== 1. Заявки на материалы ===== */
-  .t-mat { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e6e6e6; }
-  .t-mat .box {
-    width: 100%; max-width: 330px; padding: 26px 24px; border-radius: 16px; text-align: center;
-    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25); backdrop-filter: blur(6px);
-  }
-  .t-mat .title {
-    display: inline-flex; align-items: center; gap: 10px; font: 700 22px/1.2 var(--sans); white-space: nowrap;
-    background: linear-gradient(90deg, #00d4ff, #00ff88); -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .t-mat .sub { margin: 8px 0 20px; color: #b8bfd0; font-size: 14px; }
-  .t-mat .btn { border-radius: 10px; color: #1a1a2e; background: linear-gradient(90deg, #00d4ff, #00ff88); }
-  .t-mat .foot { color: #7f8db0; border-top: 1px solid rgba(255,255,255,.08); }
-  .t-mat .foot .go { color: #00d4ff; }
-
-  /* ===== 2. Ремонт электродвигателей ===== */
-  .t-mot { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; }
-  .t-mot .box {
-    width: 100%; max-width: 330px; padding: 26px 24px; border-radius: 16px; text-align: center;
-    background: #2a2f4a; background: rgba(255,255,255,.09);
-    box-shadow: 0 10px 30px rgba(0,0,0,.28);
-  }
-  .t-mot .title { font: 700 22px/1.2 var(--sans); }
-  .t-mot .sub { margin: 8px 0 20px; color: #9aa4b8; font-size: 14px; }
-  .t-mot .btn { border-radius: 10px; color: #fff; text-align: left; padding-left: 22px; background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%); }
-  .t-mot .foot { color: #7f8c9a; border-top: 1px solid rgba(255,255,255,.08); }
-  .t-mot .foot .go { color: #f5b041; }
-
-  /* ===== 3. Стажировки ===== */
-  .t-sta { background: #edf0f3; color: #16202a; border: 1px solid #d6dce2; }
-  .t-sta .box {
-    width: 100%; max-width: 320px; padding: 26px 26px 28px; border-radius: 6px;
-    background: #fff; border: 1px solid #d6dce2;
-  }
-  .t-sta .title { font: 400 26px/1.15 Georgia, "Times New Roman", serif; }
-  .t-sta .sub { margin: 10px 0 20px; color: #64717e; font-size: 13px; line-height: 1.45; }
-  .t-sta .btn { border-radius: 4px; color: #fff; font-weight: 500; background: #8a5a00; }
-  .t-sta .foot { color: #64717e; border-top: 1px solid #d6dce2; background: #f6efe2; }
-  .t-sta .foot .go { color: #8a5a00; }
-
-  /* ===== 4. Узлы учёта (приборная панель) ===== */
-  .t-uch { background: #f6f7f9; color: #1b1f24; border: 1px solid #dfe3e8; }
-  .t-uch .panel {
-    position: relative; width: 100%; max-width: 520px; padding: 20px 22px 16px; border-radius: 14px;
-    background: linear-gradient(160deg, #8f949c 0%, #6f757e 18%, #565c66 55%, #6b717a 100%);
-    border: 1px solid #4a4f58;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -2px 6px rgba(0,0,0,.45), 0 14px 30px rgba(10,14,20,.30);
+  /* ---------- пульт ---------- */
+  .console {
+    position: relative;
+    padding: 40px 38px 44px;
+    border-radius: 26px;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px),
+      linear-gradient(160deg, #343a43 0%, #23282f 45%, #1b1f25 100%);
+    border: 1px solid #12151a;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12),
+      inset 0 -2px 8px rgba(0,0,0,.5),
+      0 24px 60px rgba(15,20,30,.28);
   }
   .screw {
-    position: absolute; width: 13px; height: 13px; border-radius: 50%;
+    position: absolute; width: 15px; height: 15px; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #d7dade, #8d939b 60%, #5a5f67);
-    box-shadow: inset 0 1px 1px rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.5);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.6), 0 1px 2px rgba(0,0,0,.6);
   }
-  .screw::after { content: ""; position: absolute; inset: 4.5px 2px; border-top: 1.5px solid rgba(40,44,50,.75); transform: rotate(35deg); }
-  .screw.tl { top: 8px; left: 8px; } .screw.tr { top: 8px; right: 8px; }
-  .screw.bl { bottom: 8px; left: 8px; } .screw.br { bottom: 8px; right: 8px; }
-  .plate {
-    padding: 5px; border-radius: 6px; margin-bottom: 14px;
-    background: linear-gradient(170deg, #dcc084, #bb974d 45%, #d0b072 100%);
-    border: 1px solid #8d6f32; box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 2px 5px rgba(0,0,0,.4);
-  }
-  .plate-in { display: flex; align-items: center; gap: 14px; padding: 8px 14px; border: 1.5px solid rgba(120,92,34,.55); border-radius: 4px; }
-  .plate-in img { width: 54px; height: 54px; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
-  .plate-title { font: 700 20px/1.05 var(--sans); color: #3a2c0c; text-shadow: 0 1px 0 rgba(255,255,255,.4); }
-  .plate-sub { font-size: 12.5px; color: #4d3c14; margin-top: 5px; }
-  .mid { display: flex; align-items: center; gap: 12px; }
-  .leds { display: flex; flex-direction: column; gap: 7px; }
-  .led { width: 9px; height: 9px; border-radius: 50%; border: 1px solid rgba(0,0,0,.45); }
-  .led.g { background: #46d16b; box-shadow: 0 0 8px #46d16b; }
-  .led.a { background: #6b5220; } .led.r { background: #5f2a26; }
-  .lcd {
-    flex: 1; min-width: 0; padding: 10px 12px; border-radius: 7px;
-    background: linear-gradient(180deg, #cfe3c0, #b9d7a6); border: 3px solid #3f444c;
-    box-shadow: inset 0 3px 10px rgba(60,80,50,.5);
-    font: 18px/1.1 "Consolas", "DejaVu Sans Mono", monospace; letter-spacing: .1em; color: #1f3320;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .dev-btn {
-    flex: none; padding: 12px 18px; border-radius: 8px;
-    font: 600 14px/1 var(--sans); letter-spacing: .08em; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.4);
-    background: linear-gradient(180deg, #4f9bf5, #1f63c8 60%, #17509f); border: 1px solid #143f7d;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 3px 6px rgba(0,0,0,.35);
-  }
-  .card:hover .dev-btn { filter: brightness(1.08); }
-  .marks { display: flex; justify-content: space-between; margin: 10px 4px 0; font-size: 10.5px; color: #cfd4da; text-shadow: 0 1px 0 rgba(0,0,0,.4); }
-  .t-uch .foot { color: #5c6672; border-top: 1px solid #dfe3e8; background: #fff; }
-  .t-uch .foot .go { color: #1f63c8; }
+  .screw::after { content: ""; position: absolute; inset: 5px 2px; border-top: 1.5px solid rgba(40,44,50,.8); transform: rotate(35deg); }
+  .screw.tl { top: 14px; left: 14px; } .screw.tr { top: 14px; right: 14px; }
+  .screw.bl { bottom: 14px; left: 14px; } .screw.br { bottom: 14px; right: 14px; }
 
-  /* ===== 5. Проверка АВР ===== */
-  .t-avr { background: #E6EBE5; color: #15201B; border: 1px solid #C8D1C9; }
-  .t-avr .stage { justify-content: flex-start; align-items: stretch; flex-direction: column; padding: 24px 24px 20px; }
-  .t-avr .eb { font: 600 11px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #56655E; }
-  .t-avr .title { font: 600 26px/1.1 var(--display); margin: 10px 0 8px; }
-  .t-avr .sub { color: #56655E; font-size: 14px; margin: 0 0 16px; max-width: 46ch; }
-  .t-avr .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: auto; }
-  .t-avr .tile {
-    background: #F7F9F5; border: 1px solid #C8D1C9; border-radius: 12px; padding: 12px 14px;
-    box-shadow: 0 1px 2px rgba(20,32,27,.08), 0 6px 20px rgba(20,32,27,.07);
-  }
-  .t-avr .tile b { display: block; font: 600 15px/1.2 var(--sans); margin-bottom: 8px; }
-  .t-avr .row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #56655E; margin-top: 4px; }
-  .t-avr .sq { width: 10px; height: 10px; border-radius: 2px; flex: none; }
-  .sq.bad  { background: repeating-linear-gradient(135deg, #D23A31 0 3px, #A9271F 3px 5px); }
-  .sq.soon { background: #2E9757; outline: 2px solid #F0AE38; outline-offset: -2px; }
-  .sq.ok   { background: #2E9757; }
-  .t-avr .chip {
-    display: inline-block; align-self: flex-start; margin-bottom: 16px;
-    padding: 9px 16px; border-radius: 999px; background: #15201B; color: #F2F5F3; font: 500 14px/1 var(--sans);
-  }
-  .t-avr .foot { color: #56655E; border-top: 1px solid #C8D1C9; background: #F7F9F5; }
-  .t-avr .foot .go { color: #1D7340; }
+  .keys { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
 
-  /* ---------- подвал ---------- */
-  footer { margin-top: 36px; color: var(--muted); font-size: 13px; text-align: center; }
+  /* ---------- гнездо клавиши (сама ссылка) ---------- */
+  .slot {
+    --w: calc((100% - 2 * var(--gap)) / 3);
+    position: relative; flex: 0 0 var(--w); height: 232px;
+    display: block; padding: 11px 11px 15px; border-radius: 24px;
+    text-decoration: none; color: inherit; outline: none;
+    background: linear-gradient(180deg, #0a0c10, #14181e);
+    box-shadow: inset 0 4px 10px rgba(0,0,0,.85), 0 1px 0 rgba(255,255,255,.08);
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* подсветка, видная в щели вокруг клавиши */
+  .slot::before {
+    content: ""; position: absolute; inset: 5px; border-radius: 20px;
+    background: var(--glow); filter: blur(9px); opacity: .55;
+    transition: opacity .25s, filter .25s;
+  }
+  .slot:hover::before, .slot:focus-visible::before { opacity: 1; filter: blur(12px); }
+  .slot:focus-visible { box-shadow: inset 0 4px 10px rgba(0,0,0,.85), 0 0 0 3px #fff, 0 0 0 6px var(--led); }
 
-  @media (prefers-reduced-motion: reduce) { .card, .foot .go::after { transition: none; } }
+  /* ---------- металлическая клавиша ---------- */
+  .key {
+    position: relative; z-index: 1; height: 100%;
+    display: flex; flex-direction: column;
+    padding: 20px 22px 18px; border-radius: 15px; overflow: hidden;
+    color: rgba(255,255,255,.94);
+    background:
+      radial-gradient(120% 70% at 28% -10%, rgba(255,255,255,.38), transparent 55%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, rgba(0,0,0,.04) 1px 2px, transparent 2px 3px),
+      linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 40%, rgba(0,0,0,.16)),
+      linear-gradient(135deg, var(--c1), var(--c2));
+    border: 1px solid rgba(0,0,0,.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.6),
+      inset 0 0 0 1px rgba(255,255,255,.08),
+      inset 0 -3px 0 rgba(0,0,0,.18),
+      0 7px 0 var(--edge),
+      0 12px 16px rgba(0,0,0,.55);
+    transform: translateY(-6px);
+    transition: transform .11s ease, box-shadow .11s ease, filter .2s;
+  }
+  /* фаска по краю */
+  .key::before {
+    content: ""; position: absolute; inset: 7px; border-radius: 10px; pointer-events: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.28), 0 1px 0 rgba(255,255,255,.22);
+  }
+  /* блик, пробегающий при наведении */
+  .key::after {
+    content: ""; position: absolute; top: -40%; bottom: -40%; width: 38%; left: -60%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent);
+    transform: skewX(-12deg); pointer-events: none;
+  }
+  .slot:hover .key { filter: brightness(1.06) saturate(1.05); }
+  .slot:hover .key::after { left: 130%; transition: left .7s ease; }
+  .slot:active .key {
+    transform: translateY(1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.45),
+      inset 0 -1px 0 rgba(0,0,0,.18),
+      0 1px 0 var(--edge),
+      0 2px 4px rgba(0,0,0,.5);
+  }
+
+  /* гравировка: светлый металл в «вырезе» */
+  .engr { text-shadow: 0 -1px 0 rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.28); }
+  .slot:hover .engr { text-shadow: 0 -1px 0 rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.28), 0 0 14px var(--led); }
+
+  .top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; }
+  .ico {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    background: rgba(0,0,0,.14);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.3);
+  }
+  .ico svg {
+    width: 26px; height: 26px; fill: none; stroke: rgba(255,255,255,.95); stroke-width: 1.8;
+    stroke-linecap: round; stroke-linejoin: round;
+    filter: drop-shadow(0 -1px 0 rgba(0,0,0,.4)) drop-shadow(0 1px 0 rgba(255,255,255,.2));
+  }
+  .led {
+    width: 10px; height: 10px; border-radius: 50%; margin-top: 4px;
+    background: radial-gradient(circle at 40% 35%, #fff 0 18%, var(--led) 45%);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.28), 0 0 10px var(--led), 0 0 18px var(--led);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 2px rgba(0,0,0,.28), 0 0 5px var(--led), 0 0 8px var(--led); } }
+
+  .title { position: relative; margin-top: auto; font: 700 21px/1.15 var(--sans); letter-spacing: .01em; }
+  .sub { position: relative; margin-top: 6px; font-size: 13.5px; line-height: 1.3; color: rgba(255,255,255,.82); }
+  .rule { position: relative; height: 2px; margin: 14px 0 10px; border-radius: 2px;
+          background: rgba(0,0,0,.22); box-shadow: 0 1px 0 rgba(255,255,255,.22); }
+  .meta { position: relative; display: flex; justify-content: space-between; align-items: center;
+          font: 500 11.5px/1 var(--mono); color: rgba(255,255,255,.75); }
+  .meta .go { font: 600 12.5px/1 var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+  .meta .go::after { content: "\00a0→"; display: inline-block; transition: transform .2s; }
+  .slot:hover .meta .go::after { transform: translateX(4px); }
+
+  /* ---------- цвета клавиш (по стартовым страницам сайтов) ---------- */
+  .k-mat { --c1: #12bfe0; --c2: #0aa874; --edge: #06604a; --led: #00ffb0;
+           --glow: linear-gradient(90deg, #00d4ff, #00ff88); }
+  .k-mot { --c1: #f5a623; --c2: #de4a33; --edge: #8e2c1c; --led: #ffb347;
+           --glow: linear-gradient(90deg, #f39c12, #e74c3c); }
+  .k-sta { --c1: #b07c1c; --c2: #6f4700; --edge: #3f2800; --led: #ffcf6e;
+           --glow: linear-gradient(90deg, #c88a1a, #8a5a00); }
+  .k-uch { --c1: #4f9bf5; --c2: #17509f; --edge: #0d2f60; --led: #7cc0ff;
+           --glow: linear-gradient(90deg, #4f9bf5, #1f63c8); }
+  .k-avr { --c1: #3cb06a; --c2: #1d7340; --edge: #0f4224; --led: #6af59e;
+           --glow: linear-gradient(90deg, #36af66, #f0ae38 50%, #36af66); }
+
+  footer { margin-top: 30px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  /* ---------- адаптив ---------- */
+  @media (max-width: 980px) {
+    .slot { --w: calc((100% - var(--gap)) / 2); }
+  }
+  @media (max-width: 640px) {
+    :root { --gap: 18px; }
+    .wrap { padding: 26px 14px 40px; }
+    .hero { gap: 14px; margin-bottom: 22px; }
+    .hero img { width: 54px; height: 54px; }
+    .console { padding: 30px 16px 32px; border-radius: 20px; }
+    .slot { --w: 100%; height: auto; }
+    .key { min-height: 168px; padding: 16px 18px 14px; }
+    .title { font-size: 19px; margin-top: 16px; }
+    .rule { margin: 12px 0 9px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .key, .slot::before, .meta .go::after { transition: none; }
+    .led { animation: none; }
+    .slot:hover .key::after { transition: none; left: -60%; }
+  }
 </style>
 </head>
 <body>
@@ -213,100 +203,82 @@
     <div>
       <div class="eyebrow">Новосибирская птицефабрика</div>
       <h1>Рабочие сервисы</h1>
-      <p class="lead">Выберите раздел. Он откроется в этой же вкладке, а кнопка «Назад» в браузере вернёт вас в это меню.</p>
+      <p class="lead">Нажмите клавишу нужного раздела. Он откроется в этой же вкладке, а кнопка «Назад» в браузере вернёт вас в это меню.</p>
     </div>
   </header>
 
-  <nav class="grid" aria-label="Сервисы">
+  <section class="console">
+    <i class="screw tl"></i><i class="screw tr"></i><i class="screw bl"></i><i class="screw br"></i>
 
-    <!-- 1. Заявки на материалы -->
-    <a class="card t-mat" href="https://energo380.github.io/materials-request/">
-      <div class="stage">
-        <div class="box">
-          <div class="title">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d4ff" d="M12 1.5 21.1 6.75v10.5L12 22.5 2.9 17.25V6.75z"/></svg>
-            Заявки на материалы
+    <nav class="keys" aria-label="Сервисы">
+
+      <a class="slot k-mat" href="https://energo380.github.io/materials-request/">
+        <div class="key">
+          <div class="top">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2.5 20.5 7.25v9.5L12 21.5 3.5 16.75v-9.5z"/><path d="M3.5 7.25 12 12l8.5-4.75M12 12v9.5"/></svg></span>
+            <i class="led"></i>
           </div>
-          <div class="sub">Создание заявок</div>
-          <span class="btn">Открыть</span>
+          <div class="title engr">Заявки на материалы</div>
+          <div class="sub engr">Создание и учёт заявок</div>
+          <div class="rule"></div>
+          <div class="meta"><span>/materials-request</span><span class="go engr">Открыть</span></div>
         </div>
-      </div>
-      <div class="foot"><span>/materials-request</span><span class="go">Перейти</span></div>
-    </a>
+      </a>
 
-    <!-- 2. Ремонт электродвигателей -->
-    <a class="card t-mot" href="https://energo380.github.io/motor-repair/">
-      <div class="stage">
-        <div class="box">
-          <div class="title">⚡ Ремонт двигателей</div>
-          <div class="sub">Заявки на ремонт электродвигателей</div>
-          <span class="btn">Открыть</span>
-        </div>
-      </div>
-      <div class="foot"><span>/motor-repair</span><span class="go">Перейти</span></div>
-    </a>
-
-    <!-- 3. Стажировки -->
-    <a class="card t-sta" href="https://energo380.github.io/Stagirovka/">
-      <div class="stage">
-        <div class="box">
-          <div class="title">Стажировки</div>
-          <div class="sub">Учёт стажировок электротехнического персонала</div>
-          <span class="btn">Открыть</span>
-        </div>
-      </div>
-      <div class="foot"><span>/Stagirovka</span><span class="go">Перейти</span></div>
-    </a>
-
-    <!-- 4. Узлы учёта -->
-    <a class="card wide t-uch" href="https://energo380.github.io/Uchet/">
-      <div class="stage">
-        <div class="panel">
-          <i class="screw tl"></i><i class="screw tr"></i><i class="screw bl"></i><i class="screw br"></i>
-          <div class="plate">
-            <div class="plate-in">
-              <img src="logo.png" alt="">
-              <div>
-                <div class="plate-title">Узлы учёта</div>
-                <div class="plate-sub">Метрологическая служба</div>
-              </div>
-            </div>
+      <a class="slot k-mot" href="https://energo380.github.io/motor-repair/">
+        <div class="key">
+          <div class="top">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M13.5 2 5 13.5h6.5L10.5 22 19 10.5h-6.5z"/></svg></span>
+            <i class="led"></i>
           </div>
-          <div class="mid">
-            <div class="leds"><i class="led g"></i><i class="led a"></i><i class="led r"></i></div>
-            <div class="lcd">УЧЁТ</div>
-            <span class="dev-btn">ОТКРЫТЬ</span>
-          </div>
-          <div class="marks"><span>S/N 0425-MC</span><span>Кл. точности 0,5</span></div>
+          <div class="title engr">Ремонт двигателей</div>
+          <div class="sub engr">Заявки на ремонт электродвигателей</div>
+          <div class="rule"></div>
+          <div class="meta"><span>/motor-repair</span><span class="go engr">Открыть</span></div>
         </div>
-      </div>
-      <div class="foot"><span>/Uchet</span><span class="go">Перейти</span></div>
-    </a>
+      </a>
 
-    <!-- 5. Проверка АВР -->
-    <a class="card wide t-avr" href="https://energo380.github.io/AVR/#all">
-      <div class="stage">
-        <div class="eb">Проверка АВР · акт действует 45 дней</div>
-        <div class="title">Проверка АВР</div>
-        <p class="sub">Состояние проверок АВР на всех площадках: планы, карточки зданий, сроки актов.</p>
-        <span class="chip">Все площадки</span>
-        <div class="tiles">
-          <div class="tile"><b>Пром-1</b>
-            <div class="row"><i class="sq bad"></i>нужен акт</div>
-            <div class="row"><i class="sq soon"></i>≤ 7 дней</div>
-            <div class="row"><i class="sq ok"></i>действует</div>
+      <a class="slot k-sta" href="https://energo380.github.io/Stagirovka/">
+        <div class="key">
+          <div class="top">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 9.5 12 4.5l10 5-10 5z"/><path d="M6 11.5v4.5c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.5M22 9.5v5.5"/></svg></span>
+            <i class="led"></i>
           </div>
-          <div class="tile"><b>Пром-2</b>
-            <div class="row"><i class="sq bad"></i>нужен акт</div>
-            <div class="row"><i class="sq soon"></i>≤ 7 дней</div>
-            <div class="row"><i class="sq ok"></i>действует</div>
-          </div>
+          <div class="title engr">Стажировки</div>
+          <div class="sub engr">Учёт стажировок электротехнического персонала</div>
+          <div class="rule"></div>
+          <div class="meta"><span>/Stagirovka</span><span class="go engr">Открыть</span></div>
         </div>
-      </div>
-      <div class="foot"><span>/AVR</span><span class="go">Перейти</span></div>
-    </a>
+      </a>
 
-  </nav>
+      <a class="slot k-uch" href="https://energo380.github.io/Uchet/">
+        <div class="key">
+          <div class="top">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M3.5 17a8.5 8.5 0 0 1 17 0"/><path d="M12 17l4.3-5.3"/><circle cx="12" cy="17" r="1.4"/><path d="M6 12.2l1.2.8M12 8.5v1.4M18 12.2l-1.2.8"/></svg></span>
+            <i class="led"></i>
+          </div>
+          <div class="title engr">Узлы учёта</div>
+          <div class="sub engr">Метрологическая служба</div>
+          <div class="rule"></div>
+          <div class="meta"><span>/Uchet</span><span class="go engr">Открыть</span></div>
+        </div>
+      </a>
+
+      <a class="slot k-avr" href="https://energo380.github.io/AVR/#all">
+        <div class="key">
+          <div class="top">
+            <span class="ico"><svg viewBox="0 0 24 24"><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="18" r="1.6"/><path d="M5.6 6H9l3 6M5.6 18H9l3-6h8"/><path d="M17 9l3 3-3 3"/></svg></span>
+            <i class="led"></i>
+          </div>
+          <div class="title engr">Проверка АВР</div>
+          <div class="sub engr">Состояние проверок на всех площадках</div>
+          <div class="rule"></div>
+          <div class="meta"><span>/AVR</span><span class="go engr">Открыть</span></div>
+        </div>
+      </a>
+
+    </nav>
+  </section>
 
   <footer>energo380.github.io/menu</footer>
 </main>
