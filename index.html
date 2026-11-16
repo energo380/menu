@@ -17,6 +17,7 @@
     --display: "Unbounded", "Golos Text", system-ui, sans-serif;
     --mono: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
     --gap: 26px;
+    --shagreen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='f' x='0' y='0' width='160' height='160' filterUnits='userSpaceOnUse'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeDiffuseLighting surfaceScale='1.6' lighting-color='white'%3E%3CfeDistantLight azimuth='235' elevation='55'/%3E%3C/feDiffuseLighting%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='.6' intercept='-.07'/%3E%3CfeFuncG type='linear' slope='.6' intercept='-.07'/%3E%3CfeFuncB type='linear' slope='.6' intercept='-.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='160' height='160' filter='url%28%23f%29'/%3E%3C/svg%3E");
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
@@ -90,10 +91,12 @@
     padding: 20px 22px 18px; border-radius: 15px; overflow: hidden;
     color: rgba(255,255,255,.94);
     background:
-      radial-gradient(120% 70% at 28% -10%, rgba(255,255,255,.38), transparent 55%),
-      repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 1px, rgba(0,0,0,.04) 1px 2px, transparent 2px 3px),
+      radial-gradient(120% 70% at 28% -10%, rgba(255,255,255,.3), transparent 55%),
+      var(--shagreen),
       linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 40%, rgba(0,0,0,.16)),
       linear-gradient(135deg, var(--c1), var(--c2));
+    background-size: auto, 160px 160px, auto, auto;
+    background-blend-mode: normal, overlay, normal, normal;
     border: 1px solid rgba(0,0,0,.35);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.6),
@@ -150,7 +153,8 @@
   @keyframes pulse { 50% { box-shadow: 0 0 0 2px rgba(0,0,0,.28), 0 0 5px var(--led), 0 0 8px var(--led); } }
 
   .title { position: relative; margin-top: auto; font: 700 21px/1.15 var(--sans); letter-spacing: .01em; }
-  .sub { position: relative; margin-top: 6px; font-size: 13.5px; line-height: 1.3; color: rgba(255,255,255,.82); }
+  .sub { position: relative; margin-top: 6px; font-size: 13.5px; line-height: 1.3; color: rgba(255,255,255,.9); }
+  .sub.engr, .meta .go.engr { text-shadow: 0 1px 2px rgba(0,0,0,.38), 0 -1px 0 rgba(0,0,0,.25); }
   .rule { position: relative; height: 2px; margin: 14px 0 10px; border-radius: 2px;
           background: rgba(0,0,0,.22); box-shadow: 0 1px 0 rgba(255,255,255,.22); }
   .meta { position: relative; display: flex; justify-content: space-between; align-items: center;
@@ -203,7 +207,7 @@
     <div>
       <div class="eyebrow">Новосибирская птицефабрика</div>
       <h1>Рабочие сервисы</h1>
-      <p class="lead">Нажмите клавишу нужного раздела. Он откроется в этой же вкладке, а кнопка «Назад» в браузере вернёт вас в это меню.</p>
+      <p class="lead">Нажмите клавишу нужного раздела.</p>
     </div>
   </header>
 
@@ -221,7 +225,7 @@
           <div class="title engr">Заявки на материалы</div>
           <div class="sub engr">Создание и учёт заявок</div>
           <div class="rule"></div>
-          <div class="meta"><span>/materials-request</span><span class="go engr">Открыть</span></div>
+          <div class="meta"><span></span><span class="go engr">Открыть</span></div>
         </div>
       </a>
 
@@ -234,7 +238,7 @@
           <div class="title engr">Ремонт двигателей</div>
           <div class="sub engr">Заявки на ремонт электродвигателей</div>
           <div class="rule"></div>
-          <div class="meta"><span>/motor-repair</span><span class="go engr">Открыть</span></div>
+          <div class="meta"><span></span><span class="go engr">Открыть</span></div>
         </div>
       </a>
 
@@ -247,7 +251,7 @@
           <div class="title engr">Стажировки</div>
           <div class="sub engr">Учёт стажировок электротехнического персонала</div>
           <div class="rule"></div>
-          <div class="meta"><span>/Stagirovka</span><span class="go engr">Открыть</span></div>
+          <div class="meta"><span></span><span class="go engr">Открыть</span></div>
         </div>
       </a>
 
@@ -260,7 +264,7 @@
           <div class="title engr">Узлы учёта</div>
           <div class="sub engr">Метрологическая служба</div>
           <div class="rule"></div>
-          <div class="meta"><span>/Uchet</span><span class="go engr">Открыть</span></div>
+          <div class="meta"><span></span><span class="go engr">Открыть</span></div>
         </div>
       </a>
 
@@ -273,7 +277,7 @@
           <div class="title engr">Проверка АВР</div>
           <div class="sub engr">Состояние проверок на всех площадках</div>
           <div class="rule"></div>
-          <div class="meta"><span>/AVR</span><span class="go engr">Открыть</span></div>
+          <div class="meta"><span></span><span class="go engr">Открыть</span></div>
         </div>
       </a>
 
