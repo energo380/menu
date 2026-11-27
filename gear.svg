@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f7fa"/><stop offset=".38" stop-color="#b9c2cc"/>
+      <stop offset=".62" stop-color="#8d97a3"/><stop offset="1" stop-color="#4d5560"/>
+    </linearGradient>
+    <linearGradient id="well" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a414b"/><stop offset="1" stop-color="#9aa4ae"/>
+    </linearGradient>
+    <radialGradient id="hub" cx=".38" cy=".32" r=".8">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#c3cad2"/><stop offset="1" stop-color="#5f6872"/>
+    </radialGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset=".55" stop-color="#36c2f0" stop-opacity=".0"/><stop offset=".8" stop-color="#36c2f0" stop-opacity=".55"/><stop offset="1" stop-color="#36c2f0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path d="M50.00 12.50 L53.53 12.67 L57.20 4.57 L64.67 6.40 L64.17 15.28 L68.75 17.52 L71.72 19.43 L78.95 14.25 L84.51 19.58 L79.63 27.02 L82.48 31.25 L84.10 34.39 L92.94 33.52 L95.09 40.91 L87.15 44.91 L87.50 50.00 L87.33 53.53 L95.43 57.20 L93.60 64.67 L84.72 64.17 L82.48 68.75 L80.57 71.72 L85.75 78.95 L80.42 84.51 L72.98 79.63 L68.75 82.48 L65.61 84.10 L66.48 92.94 L59.09 95.09 L55.09 87.15 L50.00 87.50 L46.47 87.33 L42.80 95.43 L35.33 93.60 L35.83 84.72 L31.25 82.48 L28.28 80.57 L21.05 85.75 L15.49 80.42 L20.37 72.98 L17.52 68.75 L15.90 65.61 L7.06 66.48 L4.91 59.09 L12.85 55.09 L12.50 50.00 L12.67 46.47 L4.57 42.80 L6.40 35.33 L15.28 35.83 L17.52 31.25 L19.43 28.28 L14.25 21.05 L19.58 15.49 L27.02 20.37 L31.25 17.52 L34.39 15.90 L33.52 7.06 L40.91 4.91 L44.91 12.85Z" fill="url(#steel)" stroke="#2c3238" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="50" cy="50" r="31" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="1"/>
+  <circle cx="50" cy="50" r="24" fill="url(#well)" stroke="#2c3238" stroke-width="1.4"/>
+  <circle cx="50" cy="50" r="22.5" fill="url(#glow)"/>
+  <g fill="#2c3238" opacity=".9">
+    <circle cx="50.00" cy="33.00" r="2.6"/><circle cx="64.72" cy="41.50" r="2.6"/><circle cx="64.72" cy="58.50" r="2.6"/><circle cx="50.00" cy="67.00" r="2.6"/><circle cx="35.28" cy="58.50" r="2.6"/><circle cx="35.28" cy="41.50" r="2.6"/>
+  </g>
+  <circle cx="50" cy="50" r="11.5" fill="url(#hub)" stroke="#2c3238" stroke-width="1.4"/>
+  <circle cx="50" cy="50" r="4.6" fill="#1d2228"/><circle cx="50" cy="50" r="4.6" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".8" transform="translate(.5 .7)"/>
+  <path d="M22 30a33 33 0 0 1 20-14" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="2" stroke-linecap="round"/>
+</svg>
